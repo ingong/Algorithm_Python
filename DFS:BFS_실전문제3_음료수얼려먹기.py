@@ -10,7 +10,7 @@ def dfs(x,y):
     if x <= -1 or x >= n or y <= -1 or y >= m:
         return False
     # 재귀 함수 dfs 
-    if gr1aph[x][y] == 0:
+    if graph[x][y] == 0:
         graph[x][y] = 1
         dfs(x - 1, y) 
         dfs(x + 1, y)
