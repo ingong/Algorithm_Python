@@ -1,23 +1,19 @@
-import sys
-userInput = list(map(int, sys.stdin.readline().rstrip().split(' ')))
-ascending = True
-descending = True
+n = int(input())
+result = []
+stack = []
+count = 1
 
-for i in range(1, 8):
-    if userInput[i] > userInput[i - 1]:
-        descending = False
-    if userInput[i] < userInput[i - 1]:
-        ascending = False
+for i in range(1, n+1):
+    data = int(input())
+    while count <= data:
+        stack.append(count)
+        count += 1
+        result.append("+")
+    if stack[-1] == data:
+        stack.pop()
+        result.append("-")
+    else:
+        print("No")
+        exit(0)
 
-if ascending:
-    answer = "ascending"
-elif descending:
-    answer = "descending"
-else:
-    answer = "mixed"
-
-print(answer)
-
-
-
-
+print('\n'.join(result))
