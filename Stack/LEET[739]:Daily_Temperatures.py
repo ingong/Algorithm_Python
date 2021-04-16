@@ -1,14 +1,27 @@
-#  코드의 의도를 파악하자
+from typing import List
 
-import sys
-n = sys.stdin.readline()
-arr = list(map(int, sys.stdin.readline().split()))
-answer = [0 for _ in range(len(arr))]
-stack = []
+class Solution:
+    def waitDaysforwarm(self, T: List[int]) -> List[int]:
+        stack = []
+        answer = [0] * len(T)
+        for i, cur in enumerate(T):
+            while stack and T[stack[-1]] < cur:
+                last = stack.pop()
+                answer[last] = i - last
+            stack.append(i)
+        return answer
 
-for i in range(len(arr)-1, -1, -1):
+solution = Solution()
+T: List = [73, 74, 75, 71, 69, 72, 76, 73]
+result: List = solution.waitDaysforwarm(T)
+print(result)
 
-    while stack and arr[stack[-1]] < arr[i]:
-        answer[stack.pop()] = i + 1
-    stack.append(i)
-print(*answer)
+# 문제 포인트
+# 1. index 값을 stack 에 넣어준다
+# 2. 탑 문제랑 거의 동일
+
+# 내가 놓친 포인트
+# 1. answer = [0] * len(T)
+# 2. enumerate 활용
+# 3. stack.pop() 의 값을 last 라는 변수를 선언해서 할당
+# 4. from typing import List
