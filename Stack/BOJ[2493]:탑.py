@@ -10,7 +10,7 @@ for i in range(len(arr)-1, -1, -1):
     stack.append(i)
 print(*answer)
 
-# 알아둬야할 포인
+# 알아둬야할 포인트
 # 1. arr 을 역순으로 접근
 # 2. stack 에 push 하는 요소를 index 로 지정
 # 3. stack 에 대해서 pop 하는 요소와 answer 의 index 에 해당 값을 넣어준다
