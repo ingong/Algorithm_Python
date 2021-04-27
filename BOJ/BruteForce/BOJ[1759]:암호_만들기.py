@@ -15,13 +15,13 @@ for s in combinations(alphabets, L):
             c_flag += 1
     if v_flag == True and c_flag >= 2:
         result.append(word)
+# 한 줄씩 띄워서 결과 값을 출력하게 해준다
+print("\n".join(result))
 
 
 # 리스트의 형태로 결과를 반환
-print(result)
+# print(result)
 
-# 한 줄씩 띄워서 결과 값을 출력하게 해준다
-print("\n".join(result))
 
 # 문제 설계 복습하기
 # combinations 를 사용하기 위해 import 시킨다
