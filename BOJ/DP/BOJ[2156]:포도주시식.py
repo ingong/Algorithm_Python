@@ -1,17 +1,14 @@
 N = int(input())
+Wines = [0] * (N+1)
+D = [0] * (N+1)
+for i in range(1, N+1):
+    Wines[i] = int(input())
 
-drink = [0] * 10000
-for i in range(N):
-    drink[i] = int(input())
+D[1] = Wines[1]
+if N >= 2:
+    D[2] = Wines[1] + Wines[2]
 
-dp = [0] * 10000
-dp[0] = drink[0]
-dp[1] = drink[0] + drink[1]
-dp[2] = max(drink[0] + drink[1], drink[0] + drink[2], drink[1]+drink[2])
+for i in range(3, N+1):
+    D[i] = max(D[i-1], D[i-2] + Wines[i], D[i-3] + Wines[i-1] + Wines[i])
 
-for i in range(3, N):
-    dp[i] = max(dp[i-1], dp[i-2]+drink[i], dp[i-3]+drink[i-1]+drink[i])
-
-print(max(dp))
-
-
+print(D[N])
