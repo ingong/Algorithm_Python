@@ -1,16 +1,10 @@
-# 1부터 100까지 더하기
-# 1. top-down (반복문으로)
-sum = 0
-for i in range(1, 101):
-    sum += i
-print(sum)
+def solution(num):
+    count = 0
+    while num != 1:
+        num = num / 2
+        print('1 num : ', num)
+        if num == 4:
+            print('2 num : ', num)
+            return num
 
-# 2. 재귀 함수
-def addRecur(num):
-    if num <= 1:
-        return 1
-    return num + addRecur(num-1)
-
-
-print(addRecur(100))
-
+solution(16)
