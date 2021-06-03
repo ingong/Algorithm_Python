@@ -11,13 +11,12 @@ def bfs(x, y, cnt):
     while q:
         x, y = q.popleft()
         for k in range(4):
-            nx = x + dx[k]
-            ny = y + dy[k]
+            nx, ny = x + dx[k], y + dy[k]
             if 0 <= nx < n and 0 <= ny < n:
+                # 틀렸던 부분
                 if a[nx][ny] == 1 and group[nx][ny] == 0:
                     q.append((nx, ny))
                     group[nx][ny] = cnt
-
 
 
 n = int(input())
@@ -30,9 +29,11 @@ for i in range(n):
             cnt += 1
             bfs(i, j, cnt)
 
+
 # 틀렸던 부분
 ans = reduce(lambda x, y: x + y, group)
 ans = [x for x in ans if x > 0]
+print(ans)
 ans = sorted(list(Counter(ans).values()))
 print(cnt)
 print('\n'.join(map(str, ans)))

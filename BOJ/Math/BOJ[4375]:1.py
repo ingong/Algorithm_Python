@@ -10,7 +10,7 @@ while True:
     i = 1
     while True:
         num = num * 10 + 1
-        num %= N
+        num = num % N
         if num == 0:
             print(i)
             break
