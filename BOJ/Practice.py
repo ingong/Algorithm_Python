@@ -1,10 +1,8 @@
-def solution(num):
-    count = 0
-    while num != 1:
-        num = num / 2
-        print('1 num : ', num)
-        if num == 4:
-            print('2 num : ', num)
-            return num
+a = "a123"
 
-solution(16)
+for i in a:
+    print(i)
+
+
+for i in range(len(a)):
+    print(a[i].isdigit())
