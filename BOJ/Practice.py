@@ -1,18 +1,36 @@
-import sys
-n, m = 3, 3
-c = [False for _ in range(n+1)]
-a = [0 for _ in range(m)]
+# 1
+# A B
 
+# 2
+# 71
 
-def go(index, n):
-    if index == n:
-        print(a)
-    for i in range(1, n+1):
-        if c[i]:
-            continue
-        c[i] = True
-        a[index] = i
-        go(index+1, n)
-        c[i]= False
+# 3번
+# 15
+count = 0
+for i in range(1, 100, 7):
+    print(i)
+    count += 1
+    print(count)
+print(count)
 
-go(0, n)
+# 4번
+# 5
+
+# 5번
+# 5
+
+# 6번
+arr = [1, 2, 3, 3, 3, 3, 4, 4]
+arr2 = [3, 2, 4, 4, 2, 5, 2, 5, 5]
+overlap = {}
+
+for number in sorted(arr):
+    if number in overlap:
+        overlap[number] += 1
+    else:
+        overlap[number] = 1
+
+if not overlap:
+    print([-1])
+else:
+    print(list(filter(lambda x: x > 1, list(overlap.values()))))
