@@ -11,16 +11,15 @@ def solve(row, N):
     for col in range(N):
         isAble = True
 
-        for preRow in range(row):
-            if col == cols[preRow] or abs(preRow - row) == abs(cols[preRow] - col):
+        for prevRow in range(row):
+            if col == cols[prevRow] or abs(prevRow-row) == abs(cols[prevRow] - col):
                 isAble = False
                 break
-            else:
-                pass
 
         if isAble:
             cols[row] = col
             solve(row + 1, N)
+
 
 solve(0, N)
 print(ans)
