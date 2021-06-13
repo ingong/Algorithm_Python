@@ -11,6 +11,7 @@ dist[N] = 0
 q = deque()
 check[N] = 1
 q.append(N)
+
 while q:
     now = q.popleft()
     for nxt in [now + 1, now - 1, now * 2]:

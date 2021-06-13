@@ -1,36 +1,36 @@
-# 1
-# A B
+from collections import deque
+import sys
+sys.setrecursionlimit(10 ** 6)
 
-# 2
-# 71
+MAX = 200000
+dist = [-1 for _ in range(MAX)]
+check = [False for _ in range(MAX)]
+via = [0 for _ in range(MAX)]
 
-# 3번
-# 15
-count = 0
-for i in range(1, 100, 7):
-    print(i)
-    count += 1
-    print(count)
-print(count)
+N, K = map(int, input().split())
+q = deque()
+q.append(N)
+dist[N] = 0
+check[N] = True
 
-# 4번
-# 5
+while q:
+    now = q.popleft()
+    for nex in [now + 1, now - 1, now * 2]:
+        if 0 <= nex < MAX and not check[nex]:
+            dist[nex] = dist[now] + 1
+            check[nex] = True
+            via[nex] = now
+            q.append(nex)
 
-# 5번
-# 5
 
-# 6번
-arr = [1, 2, 3, 3, 3, 3, 4, 4]
-arr2 = [3, 2, 4, 4, 2, 5, 2, 5, 5]
-overlap = {}
+def go(n, k):
+    if n != k:
+        go(n, via[k])
+    print(k, end=' ')
 
-for number in sorted(arr):
-    if number in overlap:
-        overlap[number] += 1
-    else:
-        overlap[number] = 1
 
-if not overlap:
-    print([-1])
-else:
-    print(list(filter(lambda x: x > 1, list(overlap.values()))))
+print(dist[K])
+go(N, K)
+
+
+
