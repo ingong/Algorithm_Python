@@ -1,38 +1,31 @@
-from collections import deque, Counter
-from functools import reduce
+from collections import deque
+import sys
 
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
+MAX = 200000
+sys.setrecursionlimit(MAX)
+check = [False] * MAX
+dist = [-1] * MAX
+via = [-1] * MAX
+n, m = map(int, input().split())
+check[n] = True
+dist[n] = 0
+q = deque()
+q.append(n)
+while q:
+    now = q.popleft()
+    for nxt in [now + 1, now - 1, now * 2]:
+        if 0 <= nxt < MAX and not check[nxt]:
+            check[nxt] = True
+            dist[nxt] = dist[now] + 1
+            via[nxt] = now
+            q.append(nxt)
 
-def bfs(x, y, cnt):
-    q = deque()
-    q.append((x, y))
-    group[x][y] = cnt
-    while q:
-        x, y = q.popleft()
-        for k in range(4):
-            nx = x + dx[k]
-            ny = y + dy[k]
-            if 0 <= nx < n and 0 <= ny < n:
-                if a[nx][ny] == 1 and group[nx][ny] == 0:
-                    q.append((nx, ny))
-                    group[nx][ny] = cnt
+
+def go(n, m):
+    if n != m:
+        go(n, via[m])
+    print(m, end=' ')
 
 
-
-n = int(input())
-a = [list(map(int, list(input()))) for _ in range(n)]
-group = [[0 for _ in range(n)] for _ in range(n)]
-cnt = 0
-for i in range(n):
-    for j in range(n):
-        if a[i][j] == 1 and group[i][j] == 0:
-            cnt += 1
-            bfs(i, j, cnt)
-
-# 틀렸던 부분
-ans = reduce(lambda x, y: x + y, group)
-ans = [x for x in ans if x > 0]
-ans = sorted(list(Counter(ans).values()))
-print(cnt)
-print('\n'.join(map(str, ans)))
+print(dist[m])
+go(n, m)
