@@ -69,7 +69,37 @@
 # result = [[c + d for c, d in zip(a, b)] for a, b in zip(A, B)]
 # print(result)
 
-array = [1, 5, 2, 6, 3, 7, 4]
-abc = list(map(str, array))
-print(abc)
+# array = [1, 5, 2, 6, 3, 7, 4]
+# abc = list(map(str, array))
+# print(abc)
+
+# plist = ["las", "god", "psala", "sal"]
+# re_plist = list(map(lambda x : x[::-1], plist))
+#
+# for p in plist:
+#     if p in re_plist:
+#         print(len(p), p[len(p)//2])
+#         break
+
+arr = [[0 for _ in range(100)] for _ in range(100)]
+# arr1 = [[0] * 100 for _ in range(100)]
+cnt = 0
+
+for i in range(4):
+    x_l, y_l, x_r, y_r = map(int, input().split())
+    for k in range(x_l, x_r):
+        for j in range(y_l, y_r):
+            if arr[j][k] == 0:
+                arr[j][k] = 1
+                cnt += 1
+
+print(cnt)
+
+
+
+
+
+
+
+
 
