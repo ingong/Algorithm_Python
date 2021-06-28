@@ -13,7 +13,6 @@ for i in range(0, len(arr), 3):
     if sum(arr[i:i+3]) != 5:
         answer = 0
 
-
 win, lose = 0, 0
 for i in range(0, len(arr), 3):
     win += arr[i]
