@@ -26,8 +26,6 @@ for i, val in enumerate(result):
     if val == keyword:
         count += 1
     if count == number:
-        print(i)
-        print(people)
         print((i % people))
         break
 

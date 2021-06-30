@@ -18,5 +18,4 @@ for i, v in enumerate(check):
     else:
         continue
 
-print(check)
 print(check.count(1))
