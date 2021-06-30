@@ -23,11 +23,12 @@ while start <= end:
             point = houses[i]
 
     if count >= C:
+        answer = gap
         start = gap + 1
     else:
         end = gap - 1
 
-print(end)
+print(answer)
 
 
 

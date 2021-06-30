@@ -1,20 +1,24 @@
 N = int(input())
 cities = list(map(int, input().split()))
 budgets = int(input()) # 예산
-start, end = 0, max(cities) # 시작 점, 끝 점
+start, end = min(cities), max(cities) # 시작 점, 끝 점
+answer = 0
 
-# 시작과 끝값을 0 과 현재 갖고 있는 값에서 최대 값으로 설정
-# 이분 탐색
 while start <= end:
-    mid = (start+end) // 2
-    total = 0 # 총 지출 양
-    for i in cities:
-        if i > mid:
-            total += mid
+    total = 0
+    mid = (start + end) // 2
+
+    for city in cities:
+        if city < mid:
+            total += city
         else:
-            total += i
-    if total <= budgets: # 지출 양이 예산 보다 작으면
+            total += mid
+
+    if total <= budgets:
+        answer = mid
         start = mid + 1
-    else: # 지출 양이 예산 보다 크면
+    else:
         end = mid - 1
-print(end)
+
+
+print(answer)
